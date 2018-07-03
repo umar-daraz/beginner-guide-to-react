@@ -1,0 +1,46 @@
+<style>
+    .box {
+        border: 2px solid black;
+        margin: 10px;
+    }
+
+    .box--small {
+        width: 90px;
+        height: 90px;
+    }
+    .box--medium {
+        width: 120px;
+        height: 120px;
+    }
+    .box--big {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    const Box = ({style,className,size, ...rest}) => {
+        const sizeClassName = size ? `box--${size}`: ''
+        return (
+            <div className={`box ${className} ${sizeClassName}`} 
+            style={{paddingLeft: 20, ...style}}
+            {...rest}/>
+        )
+    }
+    const element = <div>
+            <Box size="small" className="box--small" style={{backgroundColor: 'blue'}}>
+                Small Box
+            </Box>
+            <Box size="medium" style={{backgroundColor: 'green'}}>
+                Medium Box
+            </Box>
+            <Box size="big" style={{backgroundColor: 'red'}}>
+                Big Box
+            </Box>
+        </div>
+    const root = document.getElementById("root");
+    ReactDOM.render(element, root);
+</script>
