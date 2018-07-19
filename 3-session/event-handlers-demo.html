@@ -1,0 +1,31 @@
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root")
+    const state = {events: 0, foo: 20}
+    class App extends React.Component {
+        state = {events: 0}
+        handleButtonEvent = () => {
+            this.setState((state) => {
+                return {events: state.events +1 }
+            })
+        }
+        render() {
+            const {events} = this.state;
+            return (
+                <div>
+                    <div>
+                        <p>Event are {events}</p>
+                        <button onClick={this.handleButtonEvent}>My Button</button>
+                    </div>
+                </div>
+            )
+        }    
+    }
+    const renderApp = () => {
+        ReactDOM.render(<App/>, root)
+    }
+    renderApp();
+</script>
